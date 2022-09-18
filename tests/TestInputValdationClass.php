@@ -6,7 +6,7 @@ class TestInputValdationClass extends \PHPUnit\Framework\TestCase
 
     public function setUp(): void
     {
-        $inputValidationClass = new \App\InputValidationClass();
+        $this->inputValidationClass = new \App\InputValidationClass();
     }
 
     /**
@@ -14,5 +14,12 @@ class TestInputValdationClass extends \PHPUnit\Framework\TestCase
      */
     public function testReturnTrueReturnTrue() {
         $this->assertTrue($this->inputValidationClass->returnTrue(), 'The method only can return true');
+    }
+
+    /**
+     * @testdox Valid email address will be true
+     */
+    public function testValidEmailInEmailValidationReturnTrue() {
+        $this->assertTrue($this->inputValidationClass->isValidEmail('roland@nevercodealone.de'));
     }
 }
