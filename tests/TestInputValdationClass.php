@@ -17,9 +17,20 @@ class TestInputValdationClass extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @testdox Valid email address will be true
+     * @testdox Valid email address will be true and invalid false
+     * @dataProvider emailInputProvider
      */
-    public function testValidEmailInEmailValidationReturnTrue() {
-        $this->assertTrue($this->inputValidationClass->isValidEmail('roland@nevercodealone.de'));
+    public function testValidEmail(string $email, bool $expected) {
+        $this->assertSame($this->inputValidationClass->isValidEmail($email), $expected);
     }
+
+    public function emailInputProvider(): array
+    {
+        return [
+            ['roland@nevercodealone.de', true],
+            ['office@nevercodealone.de', true],
+            ['isnotvalid', false]
+        ];
+    }
+
 }
