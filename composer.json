@@ -1,0 +1,14 @@
+{
+    "name": "nevercodealone/workshop-phpunit",
+    "description": "PHPUnit live coding workshop with Roland Golla",
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "authors": [
+        {
+            "name": "Roland Golla",
+            "email": "roland@nevercodealone.de"
+        }
+    ],
+    "require": {}
+}
