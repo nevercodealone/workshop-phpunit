@@ -27,9 +27,9 @@ class TestInputValdationClass extends \PHPUnit\Framework\TestCase
     public function emailInputProvider(): array
     {
         return [
-            ['roland@nevercodealone.de', true],
-            ['office@nevercodealone.de', true],
-            ['isnotvalid', false]
+            'rolands address' => ['roland@nevercodealone.de', true],
+            'office ' => ['office@nevercodealone.de', true],
+            'just a string' => ['isnotvalid', false]
         ];
     }
 
