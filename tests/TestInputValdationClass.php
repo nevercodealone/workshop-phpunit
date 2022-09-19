@@ -6,7 +6,7 @@ class TestInputValdationClass extends \PHPUnit\Framework\TestCase
 
     public function setUp(): void
     {
-        $this->inputValidationClass = new \App\InputValidationClass();
+        $this->inputValidationClass = new \App\InputValidationClass(new \App\ExternalSpamDetection());
     }
 
     /**
@@ -22,6 +22,19 @@ class TestInputValdationClass extends \PHPUnit\Framework\TestCase
      */
     public function testValidEmail(string $email, bool $expected) {
         $this->assertSame($this->inputValidationClass->isValidEmail($email), $expected);
+    }
+
+    /**
+     * @testdox Mock spam detection to false on xxx mail
+     */
+    public function testSpamEmailMocked() {
+        $externalSpamProtectionMock = $this->createMock(\App\ExternalSpamDetection::class);
+        $externalSpamProtectionMock->expects($this->once())
+            ->method('isSpam')
+            ->willReturn(false);
+
+        $inputValidationClass = new \App\InputValidationClass($externalSpamProtectionMock);
+        $this->assertFalse($inputValidationClass->isValidEmail('spam@xxx.com'));
     }
 
     public function emailInputProvider(): array
