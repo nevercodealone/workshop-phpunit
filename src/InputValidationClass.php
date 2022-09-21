@@ -13,18 +13,13 @@ final class InputValidationClass
     {
     }
 
-    public function returnTrue(): bool
-    {
-        return true;
-    }
-
     public function isValidEmail(string $email): bool
     {
         if($this->filterEmail($email) === false) {
             return false;
         }
 
-        if($this->externalSpamDetection->isSpam($email) === false) {
+        if($this->externalSpamDetection->isSpam($email)) {
             return false;
         }
 
